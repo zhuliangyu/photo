@@ -4,6 +4,7 @@ class AddFieldsToUsers < ActiveRecord::Migration
     add_column :users, :intro, :string
     add_column :users, :city, :string
     add_column :users, :province, :string
+    add_column :users, :country, :string
     add_column :users, :phone, :string
     add_column :users, :website, :string
 
