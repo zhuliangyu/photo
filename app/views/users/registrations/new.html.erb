@@ -38,7 +38,7 @@
       <%= f.select :province, ['Vancouver', 'Alberta', 'Ontario'] %>
     </div>
 
-    <%= f.select :country,CS.countries.map{|c| [c[1],c[0]] } %>
+    <%= f.select :country, CS.countries.map { |c| [c[1], c[0]] } %>
 
 
     <!--<div class="field">-->
@@ -52,9 +52,16 @@
       <%= f.text_field :phone %>
     </div>
 
+
     <div class="field">
       <%= f.label :website %><br/>
       http://<%= f.text_field :website %>
+    </div>
+
+    <div id="city_5">
+      <select class="prov"></select>
+      <select class="city" disabled="disabled"></select>
+      <select class="dist" disabled="disabled"></select>
     </div>
 
     <div class="actions">
@@ -63,3 +70,38 @@
 <% end %>
 
 <%= render "users/shared/links" %>
+
+<script type="text/javascript" charset="utf-8">
+
+    $(function () {
+
+//        $('#user_country').change(function () {
+
+//console.log($('#user_country').find(":selected").attr('value'));
+// return value CA
+//            var country = $('#user_country').find(":selected").attr('value');
+
+//        });
+
+        $("#city_5").citySelect({
+            url: {
+                "citylist": [
+                    {
+                        "p": "Vancouver",
+                        "c": [{"n": "Burnaby"}, {"n": "Richmond"}, {"n": "xx"}, {"n": "xxx"}]
+                    },
+                    {
+                        "p": "Alberta",
+                        "c": [{"n": "C"}, {"n": "C++"}, {"n": "Objective-C"}, {"n": "PHP"}, {"n": "JAVA"}]
+                    },
+                    {"p": "Ontario", "c": [{"n": "Mysql"}, {"n": "SqlServer"}, {"n": "Oracle"}, {"n": "DB2"}]},
+                ]
+            },
+            prov: "",
+            city: "",
+            dist: "",
+            nodata: "none"
+        });
+
+    })
+</script>
